@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Results.css";
 import { useHistory } from "react-router";
 import axios from "axios";
+
 import GridImage from "./GridImage/GridImage";
 
 const Results = () => {
@@ -51,7 +52,7 @@ const Results = () => {
             location={obj.location}
             name={obj.name}
             username={obj.username}
-            onClick={setShowModal(true)}
+            showModal={showModal}
           />
         ))}
       </div>
