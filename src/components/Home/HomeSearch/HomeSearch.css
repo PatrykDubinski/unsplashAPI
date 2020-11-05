@@ -1,0 +1,86 @@
+.homeSearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  padding: 8px;
+  margin: 20px 0;
+  height: 38px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.homeSearch > form {
+  flex: 1;
+}
+
+.homeSearch > form > input {
+  width: 90%;
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  outline-width: 0;
+  font-size: 1.1rem;
+}
+
+.homeSearch > form > button {
+  display: none;
+}
+
+.homeSearch > .MuiSvgIcon-root {
+  font-size: 1.7rem;
+  fill: #594162;
+}
+
+.homeSearch > .MuiSvgIcon-root:first-of-type {
+  margin-right: 10px;
+}
+
+.homeSearch > .MuiSvgIcon-root:nth-of-type(2) {
+  transition: transform 0.3s ease-in-out;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.close-icon {
+  transform: translateY(-100px);
+}
+
+.close-icon.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.suggestions {
+  list-style-type: none;
+  background-color: #fff;
+  color: black;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  max-height: 200px;
+  overflow-y: scroll;
+  border-radius: 5px;
+}
+
+.suggestions > li {
+  margin: 10px 0;
+  padding: 5px;
+  border-bottom: 1px solid #e2e2e2;
+  transition: background-color 0.3s ease-out;
+}
+
+.suggestions > li:hover {
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+
+.suggestions::-webkit-scrollbar {
+  display: none;
+}
+
+.suggestions {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
