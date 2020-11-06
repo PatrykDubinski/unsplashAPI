@@ -41,6 +41,11 @@
   }
 }
 
+.no-found {
+  margin: 0 auto;
+  font-size: 2rem;
+}
+
 .filter__box {
   width: fit-content;
   height: 30px;

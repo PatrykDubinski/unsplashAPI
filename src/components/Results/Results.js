@@ -27,7 +27,9 @@ const Results = () => {
 
   let allTags = images.map((obj) => obj.tags);
   const flattened = [].concat.apply([], allTags);
-  allTags = flattened.map((single) => single.title);
+  if (flattened.length > 0) {
+    allTags = flattened.map((single) => single.title);
+  }
 
   let reducedImages = images.map((obj) => {
     const name = obj.user.name;
@@ -52,7 +54,6 @@ const Results = () => {
 
     fetchData(e.target.innerText);
   };
-
   let filters = [];
   for (let i = 0; i < 8; i++) {
     filters[i] = allTags[i];
@@ -71,23 +72,27 @@ const Results = () => {
         setParentInput={setResultsInput}
       />
       <h1 className="results__title">{resultsInput}</h1>
-      <div className="results__filters">{filters}</div>
+      <div className="results__filters">{flattened.length > 0 && filters}</div>
       <div className="results__grid">
-        {reducedImages.map((obj) => (
-          <GridImage
-            key={obj.id}
-            img={obj.images}
-            profileImg={obj.profileImg}
-            location={obj.location}
-            name={obj.name}
-            username={obj.username}
-            tags={obj.tags}
-            showModal={showModal}
-            userInput={resultsInput}
-            fetchData={fetchData}
-            setParentInput={setResultsInput}
-          />
-        ))}
+        {reducedImages.length > 0 ? (
+          reducedImages.map((obj) => (
+            <GridImage
+              key={obj.id}
+              img={obj.images}
+              profileImg={obj.profileImg}
+              location={obj.location}
+              name={obj.name}
+              username={obj.username}
+              tags={obj.tags}
+              showModal={showModal}
+              userInput={resultsInput}
+              fetchData={fetchData}
+              setParentInput={setResultsInput}
+            />
+          ))
+        ) : (
+          <div className="no-found">No images found </div>
+        )}
       </div>
     </section>
   );
