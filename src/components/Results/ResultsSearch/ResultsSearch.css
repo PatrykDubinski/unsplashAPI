@@ -1,0 +1,52 @@
+.resultsSearch {
+  width: 50%;
+  display: flex;
+  margin: 15px auto;
+  align-items: center;
+  background-color: #ebebeb;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  height: 30px;
+}
+
+.resultsSearch > form > input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline-width: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.resultsSearch > form {
+  flex: 1;
+  height: 100%;
+}
+
+.resultsSearch > form > button {
+  display: none;
+}
+
+.resultsSearch > .MuiSvgIcon-root {
+  fill: gray;
+}
+
+.resultsSearch > .MuiSvgIcon-root:first-of-type {
+  margin-right: 8px;
+}
+
+.close-icon {
+  transform: translateY(-100px);
+}
+
+.close-icon.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.resultsSearch > .MuiSvgIcon-root:nth-of-type(2) {
+  transition: transform 0.3s ease-in-out;
+  opacity: 1;
+  cursor: pointer;
+}

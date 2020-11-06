@@ -2,8 +2,19 @@ import React, { useState } from "react";
 import "./GridImage.css";
 
 import Modal from "../Modal/Modal";
+import { useHistory } from "react-router";
 
-const GridImage = ({ img, location, username, name, profileImg }) => {
+const GridImage = ({
+  img,
+  location,
+  username,
+  name,
+  profileImg,
+  tags,
+  fetchData,
+  setParentInput,
+}) => {
+  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
 
   const showModalHandler = () => {
@@ -14,11 +25,38 @@ const GridImage = ({ img, location, username, name, profileImg }) => {
     setShowModal(false);
   };
 
+  let reducedTags = tags.map((tag) => {
+    return tag.title;
+  });
+
+  const submitHandler = (e, submitedInput = e.target.innerText) => {
+    e.preventDefault();
+    history.push({
+      pathname: "/results",
+      state: {
+        input: submitedInput,
+      },
+    });
+    setParentInput(submitedInput);
+    fetchData(submitedInput);
+  };
+
   return (
     <>
-      <div className="gridImage" onClick={showModalHandler}>
-        <div className="gridImage__top">
+      <div className="gridImage">
+        <div className="gridImage__top" onClick={showModalHandler}>
           <img src={img} alt={location} />
+        </div>
+        <div className="gridImage__bottom">
+          {reducedTags.map((tag, i) => (
+            <div
+              key={i}
+              className="gridImage__bottom-tag"
+              onClick={(e) => submitHandler(e, e.target.innerText)}
+            >
+              {tag}
+            </div>
+          ))}
         </div>
       </div>
       {showModal && (
