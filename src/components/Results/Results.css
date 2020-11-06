@@ -10,6 +10,12 @@
   gap: 20px;
 }
 
+@media (max-width: 500px) {
+  .results__grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
 .results__title {
   font-size: 2.5rem;
   margin-left: 40px;
@@ -21,6 +27,18 @@
   align-items: center;
   justify-content: space-evenly;
   margin-top: 10px;
+}
+
+@media (max-width: 1120px) {
+  .results__filters {
+    overflow-x: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .results__filters::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .filter__box {
