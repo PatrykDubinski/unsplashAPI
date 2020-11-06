@@ -25,6 +25,10 @@ const Results = () => {
     fetchData(resultsInput);
   }, []);
 
+  let allTags = images.map((obj) => obj.tags);
+  const flattened = [].concat.apply([], allTags);
+  allTags = flattened.map((single) => single.title);
+
   let reducedImages = images.map((obj) => {
     const name = obj.user.name;
     const username = obj.user.username;
@@ -43,12 +47,21 @@ const Results = () => {
     };
   });
 
-  const changeInputHandler = (val) => {
-    setResultsInput(val);
+  const filterClick = (e) => {
+    setResultsInput(e.target.innerText);
 
-    // submited
-    fetchData(resultsInput);
+    fetchData(e.target.innerText);
   };
+
+  let filters = [];
+  for (let i = 0; i < 8; i++) {
+    filters[i] = allTags[i];
+  }
+  filters = filters.map((filter, i) => (
+    <div className="filter__box" key={i} onClick={(e) => filterClick(e)}>
+      <p>{filter}</p>
+    </div>
+  ));
 
   return (
     <section className="results">
@@ -58,7 +71,7 @@ const Results = () => {
         setParentInput={setResultsInput}
       />
       <h1 className="results__title">{resultsInput}</h1>
-
+      <div className="results__filters">{filters}</div>
       <div className="results__grid">
         {reducedImages.map((obj) => (
           <GridImage
