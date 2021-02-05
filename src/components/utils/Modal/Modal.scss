@@ -1,0 +1,131 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 95%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+
+  &__img {
+    width: 80%;
+    margin: 5px auto;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+
+    &-buttons {
+      display: flex;
+      align-items: center;
+
+      &--like,
+      &--add {
+        border: 1px solid gray;
+        padding: 5px 15px;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .MuiSvgIcon-root {
+          fill: gray;
+        }
+      }
+    }
+
+    &-person {
+      display: flex;
+      align-items: center;
+
+      &--names {
+        .fullname {
+          font-weight: bold;
+        }
+
+        .username {
+          font-size: 0.8rem;
+          color: gray;
+        }
+      }
+
+      &--img {
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-right: 8px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    &-location {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+
+      p {
+        align-items: center;
+        display: flex;
+        font-weight: bold;
+        font-size: 0.9rem;
+
+        .MuiSvgIcon-root {
+          fill: gray;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      align-items: center;
+
+      &--share,
+      &--info {
+        border: 1px solid gray;
+        padding: 5px 15px;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+        font-weight: bold;
+        font-size: smaller;
+
+        .MuiSvgIcon-root {
+          fill: gray;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

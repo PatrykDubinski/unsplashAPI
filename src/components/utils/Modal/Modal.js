@@ -1,12 +1,12 @@
 import React from "react";
-import "./Modal.css";
+import "./Modal.scss";
 
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import AddIcon from "@material-ui/icons/Add";
 import RoomIcon from "@material-ui/icons/Room";
 import ReplyIcon from "@material-ui/icons/Reply";
 import InfoIcon from "@material-ui/icons/Info";
-import Background from "./Background/Background";
+import Background from "../Background/Background";
 
 const Modal = ({
   img,
@@ -41,7 +41,7 @@ const Modal = ({
           </div>
         </div>
         <div className="modal__img">
-          <img src={img} />
+          <img src={img} alt="" />
         </div>
         <div className="modal__bottom">
           <div className="modal__bottom-location">

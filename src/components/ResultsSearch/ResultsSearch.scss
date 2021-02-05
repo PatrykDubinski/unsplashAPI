@@ -1,0 +1,57 @@
+.resultsSearch {
+  width: 50%;
+  display: flex;
+  margin: 15px auto;
+  align-items: center;
+  background-color: #ebebeb;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  height: 30px;
+
+  .MuiSvgIcon-root:nth-of-type(2) {
+    transition: transform 0.3s ease-in-out;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .close-icon {
+    transform: translateY(-100px);
+
+    &.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .close-icon.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .MuiSvgIcon-root {
+    fill: gray;
+  }
+
+  .MuiSvgIcon-root:first-of-type {
+    margin-right: 8px;
+  }
+
+  form {
+    flex: 1;
+    height: 100%;
+
+    input {
+      flex: 1;
+      background-color: transparent;
+      border: none;
+      outline-width: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    button {
+      display: none;
+    }
+  }
+}

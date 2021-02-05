@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import homeBg from "../../assets/images/home-bg.jpg";
+import homeBg from "../../images/home-bg.jpg";
 
 export const StyledHome = styled.section`
   width: 100vw;

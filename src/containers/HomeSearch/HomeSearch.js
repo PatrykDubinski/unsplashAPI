@@ -1,42 +1,37 @@
 import React, { useEffect, useState } from "react";
-import "./HomeSearch.css";
-import axios from "axios";
+import "./HomeSearch.scss";
 import { useHistory } from "react-router-dom";
 
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
+import { useDispatch, useSelector } from "react-redux";
+import { getTopics } from "../../redux/Photos/photos.actions";
+
+const mapState = ({ photos }) => ({
+  topics: photos.topics,
+  loading: photos.loading,
+});
 
 const HomeSearch = () => {
+  const dispatch = useDispatch();
+  const { topics, loading } = useSelector(mapState);
   const [input, setInput] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const history = useHistory();
 
-  // "https://api.unsplash.com/topics/?per_page=100&client_id=r_ruFK7cQ0xgt_Icvkf1_-uo6keov-j5eXAhml0RItg"
-
   useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(
-        "https://api.unsplash.com/topics/?per_page=100&client_id=r_ruFK7cQ0xgt_Icvkf1_-uo6keov-j5eXAhml0RItg"
-      );
-
-      const fetchedSuggestions = response.data.map((title) => {
-        return title.title;
-      });
-      setSuggestions(fetchedSuggestions);
-    }
-
-    fetchData();
+    dispatch(getTopics());
   }, []);
 
   const onInputChange = (e) => {
     setInput(e.target.value);
-    const filterSuggestions = suggestions.filter(
-      (sugg) => sugg.toLowerCase().indexOf(input.toLowerCase()) > -1
+    setFilteredSuggestions(
+      topics.filter(
+        (sugg) => sugg.toLowerCase().indexOf(input.toLowerCase()) > -1
+      )
     );
-    setFilteredSuggestions(filterSuggestions);
     if (input.length >= 2) {
       setShowSuggestions(true);
     } else {
@@ -47,7 +42,7 @@ const HomeSearch = () => {
   const submitHandler = (e, submitedInput = input) => {
     e.preventDefault();
     history.push({
-      pathname: "/results",
+      pathname: `/results/?query=${submitedInput}`,
       state: {
         input: submitedInput,
       },
@@ -67,13 +62,15 @@ const HomeSearch = () => {
     if (filteredSuggestions.length > 0) {
       suggestionsList = (
         <ul className="suggestions">
-          {filteredSuggestions.map((suggestion, index) => {
-            return (
-              <li onClick={(e) => suggestionHandler(e)} key={index}>
-                {suggestion}
-              </li>
-            );
-          })}
+          {loading && <h1 className="loading">Loading...</h1>}
+          {!loading &&
+            filteredSuggestions.map((suggestion, index) => {
+              return (
+                <li onClick={(e) => suggestionHandler(e)} key={index}>
+                  {suggestion}
+                </li>
+              );
+            })}
         </ul>
       );
     } else {

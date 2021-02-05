@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import "./GridImage.css";
+import "./GridImage.scss";
 
-import Modal from "../Modal/Modal";
+import Modal from "../../components/utils/Modal/Modal";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { getPhotos } from "../../redux/Photos/photos.actions";
 
 const GridImage = ({
   img,
@@ -11,9 +13,9 @@ const GridImage = ({
   name,
   profileImg,
   tags,
-  fetchData,
   setParentInput,
 }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
 
@@ -32,13 +34,13 @@ const GridImage = ({
   const submitHandler = (e, submitedInput = e.target.innerText) => {
     e.preventDefault();
     history.push({
-      pathname: "/results",
+      pathname: `/results/?query=${e.target.innerText}`,
       state: {
         input: submitedInput,
       },
     });
     setParentInput(submitedInput);
-    fetchData(submitedInput);
+    dispatch(getPhotos(submitedInput));
   };
 
   return (

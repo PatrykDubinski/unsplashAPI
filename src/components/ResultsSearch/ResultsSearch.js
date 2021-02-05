@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./ResultsSearch.css";
+import "./ResultsSearch.scss";
 
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import { useHistory } from "react-router";
 
-const ResultsSearch = ({ userInput, fetchData, setParentInput }) => {
+const ResultsSearch = ({ userInput, setParentInput }) => {
   const history = useHistory();
   const [input, setInput] = useState(userInput);
 
@@ -19,15 +19,13 @@ const ResultsSearch = ({ userInput, fetchData, setParentInput }) => {
 
   const submitHandler = (e, submitedInput = input) => {
     e.preventDefault();
-    console.log(submitedInput);
     history.push({
-      pathname: "/results",
+      pathname: `/results/?query=${submitedInput}`,
       state: {
         input: submitedInput,
       },
     });
     setParentInput(submitedInput);
-    fetchData(submitedInput);
   };
 
   return (

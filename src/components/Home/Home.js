@@ -1,8 +1,8 @@
 import React from "react";
-import "./Home.css";
+import "./Home.scss";
 
 import { StyledHome } from "../StyledComponents/StyledComponents";
-import HomeSearch from "./HomeSearch/HomeSearch";
+import HomeSearch from "../../containers/HomeSearch/HomeSearch";
 
 const Home = () => {
   return (

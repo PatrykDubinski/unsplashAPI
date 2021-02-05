@@ -1,5 +1,5 @@
 import React from "react";
-import "./Background.css";
+import "./Background.scss";
 
 const Background = ({ closeHandler, show }) => {
   return show && <div className="background" onClick={closeHandler}></div>;

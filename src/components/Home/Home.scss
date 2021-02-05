@@ -1,0 +1,22 @@
+.home__content {
+  z-index: 1;
+  color: #fff;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 3rem;
+    margin: 15px 0;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    .underlined {
+      text-decoration: underline;
+      color: #e2e2e2;
+    }
+  }
+}
